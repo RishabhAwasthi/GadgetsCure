@@ -41,7 +41,6 @@
                 android:background="@drawable/edittext"
                 android:id="@+id/add"
                 android:layout_width="match_parent"
-                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFA726"
                 android:layout_weight="1"
@@ -53,7 +52,7 @@
             <Button
                 android:background="@drawable/edittext"
                 android:id="@+id/no"
-                style="@style/Widget.AppCompat.Button.Colored"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFA726"
