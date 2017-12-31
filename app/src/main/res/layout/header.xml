@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="163dp"
     android:background="@drawable/head_bg"
-    tools:context="com.gadgetscure.gadgetscure.MainActivity">
+    tools:context="com.gadgetscure.gadgetscure.activities.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

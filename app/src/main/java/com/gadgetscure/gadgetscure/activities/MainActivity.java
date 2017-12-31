@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,6 +31,8 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.firebase.ui.auth.AuthUI;
+import com.gadgetscure.gadgetscure.R;
+import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.ImageSaver;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

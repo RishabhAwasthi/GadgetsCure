@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
-    tools:context="com.gadgetscure.gadgetscure.IssuesActivity">
+    tools:context="com.gadgetscure.gadgetscure.activities.IssuesActivity">
     <RelativeLayout
         android:id="@+id/emptyview"
         android:layout_width="match_parent"

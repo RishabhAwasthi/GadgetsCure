@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.adapters;
 
 /**
  * Created by Shade on 5/9/2016.
@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.gadgetscure.gadgetscure.R;
+import com.gadgetscure.gadgetscure.activities.IssuesActivity;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {

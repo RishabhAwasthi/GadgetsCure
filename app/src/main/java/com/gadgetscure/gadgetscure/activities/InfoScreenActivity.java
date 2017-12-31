@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -32,6 +32,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.gadgetscure.gadgetscure.R;
+import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.DbContract;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -140,7 +142,7 @@ public class InfoScreenActivity extends AppCompatActivity{
                 Bundle extras = new Bundle();
 
 
-                extras.putString("Issue",RecyclerAdapter.getIssue() );
+                extras.putString("Issue", RecyclerAdapter.getIssue() );
                 extras.putString("Price",RecyclerAdapter.getPrice() );
                 i.putExtras(extras);
                 startActivity(i);
@@ -369,7 +371,7 @@ public class InfoScreenActivity extends AppCompatActivity{
                         saveReceipt();
 
 
-                        Intent i = new Intent(InfoScreenActivity.this, Receipt.class);
+                        Intent i = new Intent(InfoScreenActivity.this, ReceiptActivity.class);
                         Bundle extras = new Bundle();
                         extras.putString("UserId", String.valueOf(ref_no));
                         extras.putString("Message", message);

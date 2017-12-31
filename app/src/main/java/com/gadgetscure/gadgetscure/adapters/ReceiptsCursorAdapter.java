@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.data.DbContract;
 
 /**

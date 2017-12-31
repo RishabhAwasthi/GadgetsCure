@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,9 +12,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.gadgetscure.gadgetscure.R;
 
 
-public class Receipt extends AppCompatActivity {
+public class ReceiptActivity extends AppCompatActivity {
    private String userid,message;
    private TextView UserId,Message;
     private View v;
@@ -69,7 +70,7 @@ public class Receipt extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent startMain = new Intent(Receipt.this,MainActivity.class);
+        Intent startMain = new Intent(ReceiptActivity.this,MainActivity.class);
 
         startActivity(startMain);
 

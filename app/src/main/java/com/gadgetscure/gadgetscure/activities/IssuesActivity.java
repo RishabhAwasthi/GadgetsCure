@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.firebase.ui.auth.AuthUI;
+import com.gadgetscure.gadgetscure.adapters.DataAdapter;
+import com.gadgetscure.gadgetscure.R;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

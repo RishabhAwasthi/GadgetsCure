@@ -10,28 +10,28 @@
         android:label="Gadgets Cure"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.MainActivity" />
         <activity
-            android:name=".IssuesActivity"
+            android:name=".activities.IssuesActivity"
             android:label="Problems"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activities.MainActivity" />
         </activity>
         <activity
-            android:name=".InfoScreenActivity"
+            android:name=".activities.InfoScreenActivity"
             android:label="User Info"
-            android:parentActivityName=".IssuesActivity" />
+            android:parentActivityName=".activities.IssuesActivity" />
         <!-- <activity android:name=".MainActivity"></activity> -->
         <activity
-            android:name=".Receipt"
-            android:parentActivityName=".MainActivity" />
+            android:name=".activities.ReceiptActivity"
+            android:parentActivityName=".activities.MainActivity" />
         <activity
-            android:name=".OrderActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".activities.OrderActivity"
+            android:parentActivityName=".activities.MainActivity" />
 
         <provider
             android:name=".data.DbProvider"
@@ -39,7 +39,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScreenSlidePagerActivity"/>
+        <activity android:name=".activities.ScreenSlidePagerActivity"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
+import com.gadgetscure.gadgetscure.R;
+import com.gadgetscure.gadgetscure.adapters.ReceiptsCursorAdapter;
 import com.gadgetscure.gadgetscure.data.DbContract;
 
 public class OrderActivity extends AppCompatActivity implements

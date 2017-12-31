@@ -1,4 +1,4 @@
-package com.gadgetscure.gadgetscure;
+package com.gadgetscure.gadgetscure.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.tutorialfragments.Fragment2;
 import com.gadgetscure.gadgetscure.tutorialfragments.Fragment3;
 import com.gadgetscure.gadgetscure.tutorialfragments.Fragment4;

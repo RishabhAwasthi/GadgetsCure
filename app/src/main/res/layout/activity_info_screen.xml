@@ -9,7 +9,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical"
-    tools:context="com.gadgetscure.gadgetscure.InfoScreenActivity">
+    tools:context="com.gadgetscure.gadgetscure.activities.InfoScreenActivity">
 
     <RelativeLayout
         android:id="@+id/emptyview"
