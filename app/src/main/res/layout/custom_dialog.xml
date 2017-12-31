@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/edittext"
-    android:backgroundTint="@color/colorPrimary"
+    android:backgroundTint="#FFA000"
     android:orientation="vertical">
 
     <TextView
@@ -15,16 +15,18 @@
         android:layout_marginTop="20dp"
 
         android:layout_centerHorizontal="true"
-        android:textColor="#fff"
+        android:textColor="@color/black"
         android:textSize="30dp"
         android:id="@+id/sure"/>
     <EditText
+        android:background="@drawable/edittext"
+        android:backgroundTint="#FFA726"
         android:layout_marginTop="8dp"
+        android:padding="8dp"
         android:id="@+id/des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sure"
-        android:textColor="@color/white"/>
+        android:layout_below="@+id/sure" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -36,22 +38,28 @@
         <TableRow>
 
             <Button
+                android:background="@drawable/edittext"
                 android:id="@+id/add"
                 android:layout_width="match_parent"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_height="wrap_content"
-
+                android:backgroundTint="#EF6C00"
                 android:layout_weight="1"
+                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
                 android:text="ADD"
                 />
 
             <Button
+                android:background="@drawable/edittext"
                 android:id="@+id/no"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:backgroundTint="#EF6C00"
                 android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:text="CANCEL"
                 />
         </TableRow>
