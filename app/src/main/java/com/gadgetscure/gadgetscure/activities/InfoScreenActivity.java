@@ -337,8 +337,8 @@ public class InfoScreenActivity extends AppCompatActivity{
 
                     Date = mPickDate.getText().toString();
                     Time = time.getText().toString();
-                    long x = 10011100011000l;
-                    long y = 10001001000101l;
+                    long x = 11011100011000l;
+                    long y = 10101001000101l;
                     ref_no = x + ((long) (rand.nextDouble() * (y - x)));
 
 

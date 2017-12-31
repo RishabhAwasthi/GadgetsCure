@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,6 +104,7 @@ TextView pick=(TextView)v.findViewById(R.id.picker);
                 final Dialog delte_dialog = new Dialog(getContext());
                 delte_dialog.setContentView(R.layout.custom_dialog);
                 final  EditText input=(EditText) delte_dialog.findViewById(R.id.des);
+                input.setInputType(InputType.TYPE_CLASS_PHONE);
                 TextView title=(TextView)delte_dialog.findViewById(R.id.sure);
                 title.setText("Update Phone No");
 
@@ -122,13 +124,16 @@ TextView pick=(TextView)v.findViewById(R.id.picker);
                     public void onClick(View view) {
 
                         mphone=input.getText().toString();
+                        if(mphone.length()==10) {
+                            phone.setText(mphone);
 
-
-                       phone.setText(mphone);
-
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("Phone", mphone);
-                        editor.commit();
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("Phone", mphone);
+                            editor.commit();
+                        }
+                        else{
+                            Toast.makeText(getContext(),"Enter a valid Number",Toast.LENGTH_SHORT).show();
+                        }
 
 
 
