@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +34,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.ImageSaver;
+import com.gadgetscure.gadgetscure.fragments.MyAccountFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -41,15 +42,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.HashMap;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 
 public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
@@ -72,27 +65,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     private TextView nav_user,nav_mail,nav_picker;
     private ImageView nav_dp;
-    private boolean internetConnectionAvailable(int timeOut) {
-        InetAddress inetAddress = null;
-        try {
-            Future<InetAddress> future = Executors.newSingleThreadExecutor().submit(new Callable<InetAddress>() {
-                @Override
-                public InetAddress call() {
-                    try {
-                        return InetAddress.getByName("google.com");
-                    } catch (UnknownHostException e) {
-                        return null;
-                    }
-                }
-            });
-            inetAddress = future.get(timeOut, TimeUnit.MILLISECONDS);
-            future.cancel(true);
-        } catch (InterruptedException e) {
-        } catch (ExecutionException e) {
-        } catch (TimeoutException e) {
-        }
-        return inetAddress!=null && !inetAddress.equals("");
-    }
+
 
 
 
@@ -105,24 +78,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-
-        if(!internetConnectionAvailable(7000)){
-
-            RelativeLayout noConnect =(RelativeLayout)findViewById(R.id.emptyview);
-            RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
-            yesConnect.setVisibility(View.INVISIBLE);
-            noConnect.setVisibility(View.VISIBLE);
-            Button tryAgain=(Button)findViewById(R.id.try_again);
-            tryAgain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i=new Intent(MainActivity.this,MainActivity.class);
-                    startActivity(i);
-                }
-            });
-
-
-        }
 
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -204,6 +159,16 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
                 else if(id==R.id.how){
                     Intent i = new Intent(MainActivity.this, ScreenSlidePagerActivity.class);
                     startActivity(i);
+                }
+                else if(id==R.id.acc)
+                {
+                    RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
+                    yesConnect.setVisibility(View.INVISIBLE);
+
+                    MyAccountFragment myAccountFragment = new MyAccountFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.acframe, myAccountFragment).commit();
+
                 }
 
 
@@ -293,6 +258,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
     public static String getMyString(){
         return mUsername;
     }
+    public static String getEmail(){
+        return memail;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

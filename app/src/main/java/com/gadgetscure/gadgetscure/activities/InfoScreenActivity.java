@@ -35,6 +35,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.DbContract;
+import com.gadgetscure.gadgetscure.fragments.MyAccountFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -69,7 +70,10 @@ public class InfoScreenActivity extends AppCompatActivity{
     private int hr,min;
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID=1;
-    String Name,Phone,Address;
+    String Name;
+   static String Phone= MyAccountFragment.getPhone();
+    static String Address=MyAccountFragment.getAddress();
+
     String username = MainActivity.getMyString();
     private static final int EXISTING_PET_LOADER = 0;
     private static long ref_no;
@@ -227,9 +231,11 @@ public class InfoScreenActivity extends AppCompatActivity{
         name = (EditText) findViewById(R.id.user_name);
         address = (EditText) findViewById(R.id.address);
         phone = (EditText) findViewById(R.id.phone_num);
+        if(!TextUtils.isEmpty(Phone))
+        phone.setText(Phone);
+        if(!TextUtils.isEmpty(Address))
+        address.setText(Address);
         final     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-
-
         Phone=sp.getString("Phone","");
         Address=sp.getString("Address","");
 
@@ -585,6 +591,13 @@ public class InfoScreenActivity extends AppCompatActivity{
         startActivity(i);
 
     }
+    public static String getPhone(){
+        return Phone;
+    }
+    public static String getAddress(){
+        return Address;
+    }
+
 
 
 

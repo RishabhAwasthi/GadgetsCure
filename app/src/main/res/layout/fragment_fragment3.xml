@@ -20,7 +20,7 @@
         android:layout_width="110dp"
         android:layout_height="100dp"
         android:layout_marginTop="165dp"
-        android:layout_marginLeft="135dp"
+        android:layout_marginLeft="128dp"
         android:background="@drawable/ic_bookings"/>
 
 
