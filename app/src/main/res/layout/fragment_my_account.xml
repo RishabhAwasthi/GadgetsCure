@@ -54,8 +54,9 @@
         android:layout_below="@+id/rel1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="16dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,15 +116,25 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
-            <EditText
+            <TextView
                 android:id="@+id/acphone"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="naam"
                 android:textSize="18dp"
                 android:textStyle="italic"
                 android:layout_marginLeft="72dp"
                 android:textColor="@color/black"/>
+            <ImageView
+                android:id="@+id/addphone"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="8dp"
+                android:background="@drawable/review"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+
+
+                />
 
 
 
@@ -139,15 +150,26 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
-            <EditText
+            <TextView
                 android:id="@+id/acadd"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="address"
                 android:textSize="18dp"
                 android:textStyle="italic"
                 android:layout_marginLeft="55dp"
                 android:textColor="@color/black"/>
+            <ImageView
+                android:id="@+id/addloc"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="8dp"
+                android:background="@drawable/review"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+
+
+                />
+
 
 
 
@@ -158,7 +180,7 @@
         android:id="@+id/rel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/linear1"
         android:layout_centerHorizontal="true">
 

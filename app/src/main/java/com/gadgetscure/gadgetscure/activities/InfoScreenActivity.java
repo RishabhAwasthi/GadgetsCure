@@ -4,8 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -25,7 +22,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -35,7 +31,6 @@ import com.firebase.ui.auth.AuthUI;
 import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.DbContract;
-import com.gadgetscure.gadgetscure.fragments.MyAccountFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -71,11 +66,10 @@ public class InfoScreenActivity extends AppCompatActivity{
     static final int DATE_DIALOG_ID = 0;
     static final int TIME_DIALOG_ID=1;
     String Name;
-   static String Phone= MyAccountFragment.getPhone();
-    static String Address=MyAccountFragment.getAddress();
+   static String Phone;
+    static String Address;
 
     String username = MainActivity.getMyString();
-    private static final int EXISTING_PET_LOADER = 0;
     private static long ref_no;
     private boolean internetConnectionAvailable(int timeOut) {
         InetAddress inetAddress = null;
@@ -215,7 +209,7 @@ public class InfoScreenActivity extends AppCompatActivity{
 
 
         ImageView add = (ImageView) findViewById(R.id.add);
-        add.setOnClickListener(new View.OnClickListener() {
+      /*  add.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View view) {
 
@@ -226,6 +220,40 @@ public class InfoScreenActivity extends AppCompatActivity{
 
 
         );
+        */
+      add.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              final Dialog delte_dialog = new Dialog(InfoScreenActivity.this);
+              delte_dialog.setContentView(R.layout.custom_dialog);
+            final  EditText input=(EditText) delte_dialog.findViewById(R.id.des);
+
+              delte_dialog.show();
+
+              Button cancel = (Button) delte_dialog.findViewById(R.id.no);
+              cancel.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      delte_dialog.dismiss();
+                  }
+              });
+
+              Button proceed = (Button) delte_dialog.findViewById(R.id.add);
+              proceed.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+
+                      description=input.getText().toString();
+                      Description= (TextView) findViewById(R.id.description);
+                      Description.setText(description);
+
+
+
+                      delte_dialog.dismiss();
+                  }
+              });
+          }
+      });
 
 
         name = (EditText) findViewById(R.id.user_name);
@@ -548,36 +576,6 @@ public class InfoScreenActivity extends AppCompatActivity{
         }
 
     }
-    public AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c,R.style.DialogTheme);
-        builder.setTitle("Add Description");
-        final EditText input = new EditText(InfoScreenActivity.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
-                input.setLayoutParams(lp);
-        builder.setView(input);
-
-        builder.setPositiveButton("ADD", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                description=input.getText().toString();
-                Description= (TextView) findViewById(R.id.description);
-                Description.setText(description);
-
-            }
-        });
-        builder.setNegativeButton("CANCEL",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-        return builder;
-    }
     @Override
     public void onBackPressed() {
         Intent i = new Intent(InfoScreenActivity.this, IssuesActivity.class);
@@ -590,12 +588,6 @@ public class InfoScreenActivity extends AppCompatActivity{
         i.putExtras(extras);
         startActivity(i);
 
-    }
-    public static String getPhone(){
-        return Phone;
-    }
-    public static String getAddress(){
-        return Address;
     }
 
 
