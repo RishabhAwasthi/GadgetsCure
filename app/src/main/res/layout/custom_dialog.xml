@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/edittext"
-    android:backgroundTint="#FFA000"
+    android:backgroundTint="#FFB300"
     android:orientation="vertical">
 
     <TextView
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#EF6C00"
+                android:backgroundTint="#FFA726"
                 android:layout_weight="1"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="2dp"
@@ -56,7 +56,7 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#EF6C00"
+                android:backgroundTint="#FFA726"
                 android:layout_weight="1"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
