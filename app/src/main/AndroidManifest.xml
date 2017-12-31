@@ -8,8 +8,6 @@
         android:allowBackup="true"
         android:icon="@drawable/gclogofinal"
         android:label="Gadgets Cure"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
