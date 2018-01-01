@@ -4,40 +4,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/lin"
 
     tools:context="com.gadgetscure.gadgetscure.activities.IssuesActivity">
-    <RelativeLayout
-        android:id="@+id/emptyview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-        <TextView
-            android:id="@+id/no_connect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="No Internet Connection"/>
-        <Button
-            android:id="@+id/try_again"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/no_connect"
-            android:layout_centerHorizontal="true"
-            android:text="Try Again"
-            />
 
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lin">
-
-
-
-
-        <android.support.v7.widget.Toolbar
+            <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -53,7 +24,5 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:layout_below="@+id/toolbar"/>
-        </RelativeLayout>
-
 
 </RelativeLayout>

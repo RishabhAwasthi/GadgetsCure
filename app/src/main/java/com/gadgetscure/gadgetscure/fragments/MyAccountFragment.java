@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +57,15 @@ public class MyAccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_my_account, container, false);
+        ScrollView yesConnect =(ScrollView) getActivity().findViewById(R.id.lin);
+        try {
+            yesConnect.setVisibility(View.INVISIBLE);
+        }catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
+
+        v.setBackgroundColor(Color.WHITE);
         pro_name=(TextView)v.findViewById(R.id.acname);
         pro_name.setText(musername);
         mail=(TextView)v.findViewById(R.id.gmail);

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
     android:background="@drawable/edittext"
-    android:backgroundTint="#FFB300"
+    android:backgroundTint="#03A9F4"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Description "
+        android:fontFamily="casual"
         android:textAlignment="center"
-        android:fontFamily="cursive"
         android:layout_marginTop="20dp"
-
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:id="@+id/sure"/>
     <EditText
         android:background="@drawable/edittext"
-        android:backgroundTint="#FFA726"
+        android:backgroundTint="#B3E5FC"
         android:layout_marginTop="8dp"
         android:padding="8dp"
         android:id="@+id/des"
@@ -32,17 +31,16 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/des"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content">
 
         <TableRow>
 
             <Button
-                android:background="@drawable/edittext"
+
                 android:id="@+id/add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFA726"
+                android:backgroundTint="#0288D1"
                 android:layout_weight="1"
                 android:layout_marginRight="2dp"
                 android:layout_marginLeft="2dp"
@@ -50,12 +48,11 @@
                 />
 
             <Button
-                android:background="@drawable/edittext"
-                android:id="@+id/no"
 
+                android:id="@+id/no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFA726"
+                android:backgroundTint="#0288D1"
                 android:layout_weight="1"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"

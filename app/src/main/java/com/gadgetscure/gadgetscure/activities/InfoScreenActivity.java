@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -19,7 +22,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -102,25 +104,7 @@ public class InfoScreenActivity extends AppCompatActivity{
 
         setContentView(R.layout.activity_info_screen);
 
-        if(!internetConnectionAvailable(7000)){
-
-            RelativeLayout noConnect =(RelativeLayout)findViewById(R.id.emptyview);
-            RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
-            yesConnect.setVisibility(View.INVISIBLE);
-            noConnect.setVisibility(View.VISIBLE);
-            Button tryAgain=(Button)findViewById(R.id.try_again);
-            tryAgain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i=new Intent(InfoScreenActivity.this,MainActivity.class);
-                    startActivity(i);
-                }
-            });
-
-
-        }
-
-        Toolbar toolbar;
+       Toolbar toolbar;
         toolbar = (Toolbar) findViewById(R.id.infotoolbar);
         toolbar.setTitle("Booking Info");
         toolbar.setTitleTextColor(Color.WHITE);
@@ -205,18 +189,7 @@ public class InfoScreenActivity extends AppCompatActivity{
 
 
         ImageView add = (ImageView) findViewById(R.id.add);
-      /*  add.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View view) {
 
-                                       buildDialog(InfoScreenActivity.this).show();
-
-                                   }
-                               }
-
-
-        );
-        */
       add.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -303,22 +276,7 @@ public class InfoScreenActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(!internetConnectionAvailable(7000)){
-
-                    RelativeLayout noConnect =(RelativeLayout)findViewById(R.id.emptyview);
-                    RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
-                    yesConnect.setVisibility(View.INVISIBLE);
-                    noConnect.setVisibility(View.VISIBLE);
-                    Button tryAgain=(Button)findViewById(R.id.try_again);
-                    tryAgain.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent i=new Intent(InfoScreenActivity.this,MainActivity.class);
-                            startActivity(i);
-                        }
-                    });
-
-
-
+                    buildDialog(InfoScreenActivity.this).show();
                 }
                 else {
 
@@ -549,6 +507,30 @@ public class InfoScreenActivity extends AppCompatActivity{
                 }
 
             };
+    public AlertDialog.Builder buildDialog(Context c) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to book service.If already enabled click 'Dismiss'");
+
+        builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+
+            }
+        });
+
+        return builder;
+    }
 
 
 

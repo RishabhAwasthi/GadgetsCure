@@ -1,15 +1,11 @@
 <resources>
     <string name="app_name">Gadgets Cure</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="open"> Open </string>
     <string name="close">Close</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="bookingguide">You can have a look at your booking history by clicking on the booking history menu item.</string>
+    <string name="bookingguide">You can have a look at your booking history by clicking on the bookings menu item.</string>
 </resources>

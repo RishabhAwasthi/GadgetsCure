@@ -11,21 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.adapters.DataAdapter;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 
 public class IssuesActivity extends AppCompatActivity {
@@ -33,27 +23,7 @@ public class IssuesActivity extends AppCompatActivity {
     String issue, price;
     Context context;
     private ArrayList<String> issues;
-    private boolean internetConnectionAvailable(int timeOut) {
-        InetAddress inetAddress = null;
-        try {
-            Future<InetAddress> future = Executors.newSingleThreadExecutor().submit(new Callable<InetAddress>() {
-                @Override
-                public InetAddress call() {
-                    try {
-                        return InetAddress.getByName("google.com");
-                    } catch (UnknownHostException e) {
-                        return null;
-                    }
-                }
-            });
-            inetAddress = future.get(timeOut, TimeUnit.MILLISECONDS);
-            future.cancel(true);
-        } catch (InterruptedException e) {
-        } catch (ExecutionException e) {
-        } catch (TimeoutException e) {
-        }
-        return inetAddress!=null && !inetAddress.equals("");
-    }
+
 
 
     @Override
@@ -61,27 +31,9 @@ public class IssuesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.issuescreen);
 
-        if(!internetConnectionAvailable(7000)){
-
-            RelativeLayout noConnect =(RelativeLayout)findViewById(R.id.emptyview);
-            RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
-            yesConnect.setVisibility(View.INVISIBLE);
-            noConnect.setVisibility(View.VISIBLE);
-            Button tryAgain=(Button)findViewById(R.id.try_again);
-
-            tryAgain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
 
-                    Intent i=new Intent(IssuesActivity.this,MainActivity.class);
 
-                    startActivity(i);
-                }
-            });
-
-
-        }
 
         Intent i = getIntent();
         Bundle b = i.getExtras();

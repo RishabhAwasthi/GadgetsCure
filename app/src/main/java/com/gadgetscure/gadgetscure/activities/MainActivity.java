@@ -22,7 +22,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -157,9 +156,6 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else if(id==R.id.acc)
                 {
-                    RelativeLayout yesConnect =(RelativeLayout)findViewById(R.id.lin);
-                    yesConnect.setVisibility(View.INVISIBLE);
-
                     MyAccountFragment myAccountFragment = new MyAccountFragment();
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction().replace(R.id.acframe, myAccountFragment).commit();
@@ -258,6 +254,8 @@ public class MainActivity extends AppCompatActivity{
             InputStream stream;
             try {
                 Toast.makeText(MainActivity.this, "Image saved", Toast.LENGTH_SHORT).show();
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
                 stream = getContentResolver().openInputStream(data.getData());
                 Bitmap realImage = BitmapFactory.decodeStream(stream);
                 new ImageSaver(MainActivity.this).

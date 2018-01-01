@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:largeHeap="true"
-        android:icon="@drawable/gclogofinal"
+        android:icon="@drawable/splashpic_jpg"
         android:label="Gadgets Cure"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
