@@ -198,7 +198,7 @@
             android:textColor="@color/white"
             android:clickable="true"
             android:layout_marginTop="8dp"
-            android:padding="4.5dp"
+            android:padding="8dp"
             android:layout_centerHorizontal="true"
 
             />
