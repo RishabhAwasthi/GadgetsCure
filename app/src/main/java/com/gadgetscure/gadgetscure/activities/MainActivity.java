@@ -8,14 +8,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,38 +26,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.firebase.ui.auth.AuthUI;
 import com.gadgetscure.gadgetscure.R;
 import com.gadgetscure.gadgetscure.adapters.RecyclerAdapter;
 import com.gadgetscure.gadgetscure.data.ImageSaver;
 import com.gadgetscure.gadgetscure.fragments.MyAccountFragment;
+import com.gadgetscure.gadgetscure.fragments.SwipeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class MainActivity extends AppCompatActivity{
 
     Toolbar toolbar;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
 
-    private SliderLayout mDemoSlider;
+
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    private FirebaseStorage mFirebaseStorage;
-    private StorageReference mStorageReference;
+
 
     private static final int RC_SIGN_IN=1;
     private static final int RC_PHOTO_PICKER = 2;
@@ -63,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     private TextView nav_user,nav_mail,nav_picker;
     private ImageView nav_dp;
+    static final int NUM_ITEMS = 3;
+    ImageFragmentPagerAdapter imageFragmentPagerAdapter;
+    ViewPager viewPager;
 
 
 
@@ -113,8 +111,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
 
 
-        mFirebaseStorage = FirebaseStorage.getInstance();
-        mStorageReference = mFirebaseStorage.getReference().child("profile_pics");
+
 
 
         nav_picker.setOnClickListener(new View.OnClickListener() {
@@ -177,33 +174,14 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         });
 
 
-        mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Refer and earn ", R.drawable.refer);
-        file_maps.put("Flat 25% discount", R.drawable.discount);
-        file_maps.put("Permium Services", R.drawable.premium);
-        file_maps.put("Low Charges", R.drawable.lowprice);
-        for (String name : file_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(this);
-            // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            mDemoSlider.addSlider(textSliderView);
+        imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        if (viewPager != null) {
+            viewPager.setAdapter(imageFragmentPagerAdapter);
         }
-        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(3000);
-        mDemoSlider.addOnPageChangeListener(this);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -311,6 +289,23 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     }
 
+    public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
+        public ImageFragmentPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            SwipeFragment fragment = new SwipeFragment();
+            return SwipeFragment.newInstance(position);
+        }
+    }
+
 
 
 
@@ -330,21 +325,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
 
     }
-
-    @Override
-    public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-    @Override
-    public void onPageSelected(int position) {
-        Log.d("Slider Demo", "Page Changed: " + position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {}
 
 
 
